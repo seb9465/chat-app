@@ -4,6 +4,7 @@
   "description": "Just for fun.",
   "main": "index.js",
   "scripts": {
+    "start": "tsc --watch | nodemon --inspect ./out/index.js --watch out",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
