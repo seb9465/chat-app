@@ -4,7 +4,9 @@ import * as path from 'path';
 import * as cookieParser from 'cookie-parser';
 import * as logger from 'morgan';
 import * as cors from 'cors';
+import { injectable } from 'inversify';
 
+@injectable()
 export class App {
     private readonly internalError: number = 500;
 
@@ -12,7 +14,7 @@ export class App {
 
     public constructor() {}
 
-    public build() {
+    public init() {
         this.app = express();
         this.middlewaresConfigs();
         this.mountRoutes();

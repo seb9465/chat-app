@@ -2,6 +2,6 @@ import { App } from './app';
 import 'reflect-metadata';
 import { container } from './inversify.config';
 
-const app: App = new App();
+export const SERVER: App = container.get<App>("App");
 
-app.build();
+SERVER.init();
