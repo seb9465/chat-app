@@ -10,7 +10,9 @@ export class App {
 
     private app: express.Application;
 
-    public constructor() {
+    public constructor() {}
+
+    public build() {
         this.app = express();
         this.middlewaresConfigs();
         this.mountRoutes();
@@ -52,6 +54,8 @@ export class App {
             res.send('Hello ' + req.params.name);
         })
         this.app.use('/', router);
+
+        this.errorHandeling();
     }
 
     private errorHandeling(): void {
