@@ -3,6 +3,6 @@ import { App } from './app';
 
 const container: Container = new Container();
 
-container.bind("App").to(App);
+container.bind('App').to(App);
 
 export { container };

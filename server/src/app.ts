@@ -15,17 +15,19 @@ export class App {
 
     public constructor() { this.app = express(); }
 
-
     public init(): void {
         this.middlewaresConfigs();
         this.mountRoutes();
-        const port: number|string = process.env.PORT || this.defaultPort;
+        const port: number | string = process.env.PORT || this.defaultPort;
         this.app.listen(port, (err: Error) => {
             if (err) {
+                // tslint:disable-next-line:no-console
                 return console.log(err);
             }
+
+            // tslint:disable-next-line:no-console
             return console.log('Server is listening on port ' + port);
-        })
+        });
     }
 
     private middlewaresConfigs(): void {
@@ -36,11 +38,11 @@ export class App {
         this.app.use(express.static(path.join(__dirname, '../client')));
         this.app.use(cors());
         this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-            res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-            res.header("Access-Control-Allow-Credentials", "true");
-            res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-            res.header("Access-Control-Allow-Headers",
-                "Origin,X-Requested-With,Content-Type,Accept,content-type,application/json,Authorization");
+            res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+            res.header('Access-Control-Allow-Credentials', 'true');
+            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+            res.header('Access-Control-Allow-Headers',
+                       'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json,Authorization');
             next();
         });
     }
@@ -49,13 +51,13 @@ export class App {
         Where to add the routes.
     */
     private mountRoutes(): void {
-        const router = express.Router();
+        const router: express.Router = express.Router();
         router.get('/', (req: express.Request, res: express.Response) => {
             res.send('Hello World!');
         });
         router.get('/:name', (req: express.Request, res: express.Response) => {
             res.send('Hello ' + req.params.name);
-        })
+        });
         this.app.use('/', router);
 
         this.errorHandeling();
@@ -63,19 +65,19 @@ export class App {
 
     private errorHandeling(): void {
         this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-            const err: Error = new Error("Not Found.");
+            const err: Error = new Error('Not Found.');
             next(err);
         });
 
         this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
             next();
-        })
+        });
 
         // development error handler
         // will print stacktrace
-        if (this.app.get("env") === "development") {
+        if (this.app.get('env') === 'development') {
             // tslint:disable-next-line:no-any
             this.app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
                 res.status(err.status || this.internalError);
