@@ -31,11 +31,27 @@ export class App {
         });
     }
 
+    /*
+        Where to add the routes.
+    */
     private mountRoutes(): void {
         const router = express.Router();
         router.get('/', (req: express.Request, res: express.Response) => {
             res.send('Hello World!');
         });
         this.app.use('/', router);
+    }
+
+    private errorHandeling(): void {
+        this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+            const err: Error = new Error("Not Found.");
+            next(err);
+        });
+
+        this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        })
     }
 }
