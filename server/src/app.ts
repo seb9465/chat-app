@@ -6,12 +6,21 @@ import * as logger from 'morgan';
 import * as cors from 'cors';
 
 export class App {
+    private readonly internalError: number = 500;
+
     private app: express.Application;
 
     public constructor() {
         this.app = express();
         this.middlewaresConfigs();
         this.mountRoutes();
+        const port: number|string = process.env.PORT || 3000;
+        this.app.listen(port, (err: Error) => {
+            if (err) {
+                return console.log(err);
+            }
+            return console.log('Server is listening on port ' + port);
+        })
     }
 
     private middlewaresConfigs(): void {
@@ -39,6 +48,9 @@ export class App {
         router.get('/', (req: express.Request, res: express.Response) => {
             res.send('Hello World!');
         });
+        router.get('/:name', (req: express.Request, res: express.Response) => {
+            res.send('Hello ' + req.params.name);
+        })
         this.app.use('/', router);
     }
 
@@ -53,5 +65,29 @@ export class App {
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             next();
         })
+
+        // development error handler
+        // will print stacktrace
+        if (this.app.get("env") === "development") {
+            // tslint:disable-next-line:no-any
+            this.app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+                res.status(err.status || this.internalError);
+                res.send({
+                    message: err.message,
+                    error: err
+                });
+            });
+        }
+
+        // production error handler
+        // no stacktraces leaked to user (in production env only)
+        // tslint:disable-next-line:no-any
+        this.app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+            res.status(err.status || this.internalError);
+            res.send({
+                message: err.message,
+                error: {}
+            });
+        });
     }
 }
