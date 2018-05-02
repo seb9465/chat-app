@@ -9,16 +9,17 @@ import { injectable } from 'inversify';
 @injectable()
 export class App {
     private readonly internalError: number = 500;
+    private readonly defaultPort: number = 3000;
 
     private app: express.Application;
 
-    public constructor() {}
+    public constructor() { this.app = express(); }
 
-    public init() {
-        this.app = express();
+
+    public init(): void {
         this.middlewaresConfigs();
         this.mountRoutes();
-        const port: number|string = process.env.PORT || 3000;
+        const port: number|string = process.env.PORT || this.defaultPort;
         this.app.listen(port, (err: Error) => {
             if (err) {
                 return console.log(err);
