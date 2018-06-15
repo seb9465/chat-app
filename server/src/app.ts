@@ -5,6 +5,7 @@ import * as cookieParser from 'cookie-parser';
 import * as logger from 'morgan';
 import * as cors from 'cors';
 import { injectable } from 'inversify';
+import { WebService } from './WebService';
 
 @injectable()
 export class App {
@@ -17,7 +18,7 @@ export class App {
 
     public init(): void {
         this.middlewaresConfigs();
-        this.mountRoutes();
+
         const port: number | string = process.env.PORT || this.defaultPort;
         this.app.listen(port, (err: Error) => {
             if (err) {
@@ -28,6 +29,8 @@ export class App {
             // tslint:disable-next-line:no-console
             return console.log('Server is listening on port ' + port);
         });
+
+        this.mountRoutes();
     }
 
     private middlewaresConfigs(): void {
@@ -53,14 +56,20 @@ export class App {
     private mountRoutes(): void {
         const router: express.Router = express.Router();
         router.get('/', (req: express.Request, res: express.Response) => {
-            res.send('Hello World!');
+            res.send('Server\'s running.');
         });
-        router.get('/:name', (req: express.Request, res: express.Response) => {
-            res.send('Hello ' + req.params.name);
-        });
+        // router.get('/:name', (req: express.Request, res: express.Response) => {
+        //     res.send('Hello ' + req.params.name);
+        // });
         this.app.use('/', router);
 
+        // this.addRoute(/*SERVICE*/);
+
         this.errorHandeling();
+    }
+
+    private addRoute(service: WebService): void {
+        this.app.use(service.mainRoute, service.routes);
     }
 
     private errorHandeling(): void {
