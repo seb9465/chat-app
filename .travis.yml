@@ -3,7 +3,9 @@ language: nodejs
 before_script:
 - cd client/
 - npm install npm -g
+- npm cache verify
 - npm update
+- install
 
 install:
 - npm install
