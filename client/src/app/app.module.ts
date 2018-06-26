@@ -6,10 +6,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
+import { TopMenuComponent } from './common/top-menu/top-menu.component';
+import { SidenavMenuComponent } from './common/sidenav-menu/sidenav-menu.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        TopMenuComponent,
+        SidenavMenuComponent
     ],
     imports: [
         BrowserModule,
