@@ -1,0 +1,7 @@
+@import './../../variables.scss';
+
+.sidenav-content {
+    height: $sidenav-height;
+    width: $sidenav-width;
+    overflow: hidden;
+}
