@@ -1,8 +1,22 @@
 @import './../../variables.scss';
 
 .sidenav-content {
+    background-color: $white;
     height: $sidenav-height;
     width: $sidenav-width;
+    padding: 20px;
+    box-sizing: border-box;
     overflow: hidden;
-    background-color: $white;
+
+    .sidemenu-item {
+        padding: 8px 1px;
+        display: inline-block;
+        vertical-align: top;
+        color: black;
+        z-index: 999;
+        height: 100px;
+        width: 92px;
+        color: #f1f1f1;
+        text-align: center;
+    }
 }
