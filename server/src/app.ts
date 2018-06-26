@@ -4,8 +4,10 @@ import * as path from 'path';
 import * as cookieParser from 'cookie-parser';
 import * as logger from 'morgan';
 import * as cors from 'cors';
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
 import { WebService } from './WebService';
+import { RoutesForm } from './RoutesForm';
+import Types from './Types';
 
 @injectable()
 export class App {
@@ -14,7 +16,9 @@ export class App {
 
     private app: express.Application;
 
-    public constructor() { this.app = express(); }
+    public constructor(@inject(Types.RoutesForm) private routeForm: RoutesForm) {
+        this.app = express();
+    }
 
     public init(): void {
         this.middlewaresConfigs();
@@ -64,6 +68,7 @@ export class App {
         this.app.use('/', router);
 
         // this.addRoute(/*SERVICE*/);
+        this.addRoute(this.routeForm);
 
         this.errorHandeling();
     }
