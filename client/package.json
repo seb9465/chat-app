@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "codecov": "codecov -t 7c0a095b-764e-4c6d-aaf8-ee199e3423af"
+    "codecov": "codecov"
   },
   "private": true,
   "dependencies": {
