@@ -3,6 +3,7 @@ language: nodejs
 before_script:
 - cd client/
 - npm i npm@latest -g
+- npm install codecov -g
 - npm install
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
