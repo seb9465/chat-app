@@ -21,12 +21,15 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
     preprocessors: {
-        'src/app/**/*.ts': ['coverage']
+        'dist/app/**/!(*spec).ts': ['coverage']
     },
     reporters: ['progress', 'kjhtml', 'coverage'],
     coverageReporter: {
-        type: 'lcov',
-        dir: 'coverage/'
+        dir: 'coverage/',
+        reporters: [
+            { type: 'html' },
+            { type: 'lcov' }
+        ]
     },
     port: 9876,
     colors: true,
