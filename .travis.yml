@@ -1,6 +1,6 @@
 language: nodejs
 
-before_scripts:
+before_script:
 - cd client/
 - npm install
 - export DISPLAY=:99.0
