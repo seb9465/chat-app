@@ -49,6 +49,7 @@
     "karma-coverage": "^1.1.2",
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-coveralls": "^1.2.1",
+    "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "nyc": "^12.0.2",

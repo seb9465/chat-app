@@ -1,40 +1,40 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
-    basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    basePath: "",
+    frameworks: ["jasmine", "@angular-devkit/build-angular"],
     plugins: [
-      require('karma-jasmine'),
-    //   require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-coverage')
+      require("karma-jasmine"),
+      //   require('karma-chrome-launcher'),
+      require("karma-firefox-launcher"),
+      require("karma-jasmine-html-reporter"),
+      require("karma-coverage-istanbul-reporter"),
+      require("@angular-devkit/build-angular/plugins/karma"),
+      require("karma-coverage")
     ],
-    client:{
+    client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, 'coverage'), reports: [ 'html', 'lcovonly' ],
+      dir: require("path").join(__dirname, "coverage"),
+      reports: ["html", "lcovonly"],
       fixWebpackSourcePaths: true
     },
     preprocessors: {
-        'src/**/!(*spec).ts': ['coverage']
+      "src/**/!(*spec).ts": ["coverage"]
     },
-    reporters: ['progress', 'kjhtml', 'coverage'],
+    reporters: ["progress", "kjhtml", "coverage"],
     coverageReporter: {
-        dir: 'coverage/',
-        reporters: [
-            { type: 'lcov' }
-        ]
+      dir: "coverage/",
+      reporters: [{ type: "lcov" }]
     },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Firefox'],
+    browsers: ["Firefox"],
     singleRun: true
   });
 };
