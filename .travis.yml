@@ -12,3 +12,7 @@ install:
 
 script:
 - npm run build
+- npm install codecov -g
+
+after_success:
+- codecov
