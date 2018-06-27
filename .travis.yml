@@ -1,18 +1,10 @@
 language: nodejs
 
-before_script:
+script:
 - cd client/
 - npm install npm -g
-- npm cache verify
-- npm install
-
-install:
-- npm install
 - npm install codecov -g
-
-script:
+- npm install
 - npm run build
 - npm run test
-
-after_success:
 - npm run codecov
