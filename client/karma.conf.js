@@ -21,7 +21,7 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
     preprocessors: {
-        'src/app/**/*.js': ['coverage']
+        'src/app/**/*.ts': ['coverage']
     },
     reporters: ['progress', 'kjhtml', 'coverage'],
     coverageReporter: {
