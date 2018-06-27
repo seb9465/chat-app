@@ -8,13 +8,11 @@ before_script:
 
 install:
 - npm install
+- npm install codecov -g
 
 script:
 - npm run build
-- npm install codecov -g
-
-after_scripts:
-- cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+- npm run test
 
 after_success:
-- codecov
+- npm run codecov

@@ -7,10 +7,9 @@
     "start": "ng serve --aot",
     "build": "ng build --prod",
     "test": "ng test",
-    "test:ci": "karma start karma.ci.conf.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "codecov": "codecov"
+    "codecov": "codecov -t 7c0a095b-764e-4c6d-aaf8-ee199e3423af"
   },
   "private": true,
   "dependencies": {

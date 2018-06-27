@@ -21,13 +21,12 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
     preprocessors: {
-        'dist/app/**/!(*spec).ts': ['coverage']
+        'src/**/!(*spec).ts': ['coverage']
     },
     reporters: ['progress', 'kjhtml', 'coverage'],
     coverageReporter: {
         dir: 'coverage/',
         reporters: [
-            { type: 'html' },
             { type: 'lcov' }
         ]
     },
@@ -36,6 +35,6 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: true
   });
 };
