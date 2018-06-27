@@ -7,8 +7,6 @@ before_scripts:
 script:
 - cd client/
 - npm install npm -g
-- npm install npm -g
-- npm install codecov -g
 - npm install
 - npm run build
 - npm run test
