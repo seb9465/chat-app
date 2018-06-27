@@ -1,13 +1,12 @@
 language: nodejs
 
 before_scripts:
+- cd client/
+- npm install
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 
 script:
-- cd client/
-- npm install npm -g
-- npm install
 - npm run build
 - npm run test
 
