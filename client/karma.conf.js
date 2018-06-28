@@ -4,7 +4,7 @@
 module.exports = function(config) {
   config.set({
     basePath: "",
-    frameworks: ["jasmine", "@angular-devkit/build-angular"],
+    frameworks: ["jasmine", "@angular-devkit/build-angular", "karma-typescript"],
     plugins: [
       require("karma-jasmine"),
       //   require('karma-chrome-launcher'),
@@ -23,9 +23,9 @@ module.exports = function(config) {
       fixWebpackSourcePaths: true
     },
     // preprocessors: {
-    //   "src/**/*.ts": ["typescript", "coverage"]
+    //   "src/**/*.ts": ["coverage", "karma-typescript"]
     // },
-    reporters: ["progress", "kjhtml", "coverage"],
+    reporters: ["progress", "kjhtml", "coverage", "karma-typescript"],
     coverageReporter: {
       dir: "coverage/",
       reporters: [{ type: "lcov" }]
