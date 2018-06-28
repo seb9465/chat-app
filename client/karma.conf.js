@@ -23,7 +23,7 @@ module.exports = function(config) {
       fixWebpackSourcePaths: true
     },
     preprocessors: {
-      "src/**/!(*spec).ts": ["typescript", "coverage"]
+      "src/**/*.ts": ["typescript", "coverage"]
     },
     reporters: ["progress", "kjhtml", "coverage"],
     coverageReporter: {
