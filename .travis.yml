@@ -10,7 +10,8 @@ before_script:
 
 script:
 - npm run build
-- npm run test
+- nyc npm run test
+- nyc report --reporter=text-lcov > coverage.lcov
 
 after_success:
 - codecov
