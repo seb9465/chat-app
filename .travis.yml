@@ -17,4 +17,4 @@ script:
 
 after_success:
 - codecov
-- "cat ./coverage/lcov-report/lcov | ./node_modules/coveralls/bin/coveralls.js"
+- coveralls
