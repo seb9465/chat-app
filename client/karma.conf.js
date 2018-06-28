@@ -22,9 +22,9 @@ module.exports = function(config) {
       reports: ["html", "lcovonly"],
       fixWebpackSourcePaths: true
     },
-    preprocessors: {
-      "src/**/*.ts": ["typescript", "coverage"]
-    },
+    // preprocessors: {
+    //   "src/**/*.ts": ["typescript", "coverage"]
+    // },
     reporters: ["progress", "kjhtml", "coverage"],
     coverageReporter: {
       dir: "coverage/",
