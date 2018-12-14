@@ -12,10 +12,6 @@ before_script:
   - npm install -g @angular/cli
   - cd client/
   - npm i npm@latest -g
-  - npm install
-  - npm install codecov -g
-  - npm install coveralls -g
-  - npm install nyc -g
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
