@@ -2,8 +2,14 @@
 
 .sidenav-content {
     background-color: $white;
-    height: $sidenav-height;
     width: $sidenav-width;
+    @media screen and (max-width: 400px) {
+        width: 300px;
+    }
+    @media screen and (max-width: 350px) {
+        width: 250px;
+    }
+    height: $sidenav-height;
     padding: 20px;
     box-sizing: border-box;
     overflow: hidden;

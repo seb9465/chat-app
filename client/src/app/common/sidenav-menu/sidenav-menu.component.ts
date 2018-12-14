@@ -11,5 +11,4 @@ export class SidenavMenuComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
