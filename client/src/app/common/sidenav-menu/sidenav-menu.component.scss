@@ -20,9 +20,13 @@
         vertical-align: top;
         color: black;
         z-index: 999;
-        height: 100px;
         width: 92px;
-        color: #f1f1f1;
         text-align: center;
+
+        span {
+            vertical-align: middle;
+            margin: auto;
+            padding: 0;
+        }
     }
 }
