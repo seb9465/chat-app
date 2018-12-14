@@ -23,7 +23,7 @@
         @media screen and (max-width: 350px) {
             width: 250px - 40px;
         }
-        padding: 8px 1px;
+        margin: 8px 1px;
         position: relative;
         display: inline-block;
         vertical-align: top;
@@ -37,6 +37,11 @@
             margin-left: 10px;
             padding-top: 2px;
             line-height: 24px;
+        }
+
+        &:hover {
+            color: blue !important;
+            cursor: pointer;
         }
     }
 }
