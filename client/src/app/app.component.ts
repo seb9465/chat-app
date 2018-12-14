@@ -8,16 +8,16 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class AppComponent implements OnInit {
     @ViewChild('sidenav')
-    sidenav: MatSidenav ;
+    sidenav: MatSidenav;
 
-    public _callbackFunction: Function;
+    public _sidenavCallbackFunction: Function;
 
     constructor() {
 
     }
 
     ngOnInit() {
-        this._callbackFunction = this.toggleSideMenu.bind(this);
+        this._sidenavCallbackFunction = this.toggleSideMenu.bind(this);
     }
 
     private toggleSideMenu() {
