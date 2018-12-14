@@ -15,18 +15,22 @@
     overflow: hidden;
 
     .sidemenu-item {
+        width: $sidenav-width - 40px;
+        @media screen and (max-width: 400px) {
+            width: 300px - 40px;
+        }
+        @media screen and (max-width: 350px) {
+            width: 250px - 40px;
+        }
         padding: 8px 1px;
         display: inline-block;
         vertical-align: top;
         color: black;
         z-index: 999;
-        width: 92px;
         text-align: center;
 
         span {
             vertical-align: middle;
-            margin: auto;
-            padding: 0;
         }
     }
 }
