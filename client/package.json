@@ -31,6 +31,7 @@
     "jshint": "^2.9.5",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.0.0-rc.0",
+    "tslint-microsoft-contrib": "^6.0.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

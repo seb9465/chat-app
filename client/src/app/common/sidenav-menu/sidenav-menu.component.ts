@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 // import { Router } from '@angular/router';
 
 @Component({
@@ -8,13 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavMenuComponent implements OnInit {
 
-    public constructor() { }
+    public constructor(private router: Router) { }
 
     public ngOnInit(): void {
     }
 
     public navigate(uri: string): void {
-        // this.router.navigateByUrl(uri);
-        console.log(uri);
+        this.router.navigateByUrl(uri);
     }
 }

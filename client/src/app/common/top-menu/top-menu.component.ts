@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TopMenuComponent {
     @Input()
-    myCallback: Function;
+    public myCallback: Function;
 
-    constructor() { }
+    public constructor() { }
 }
