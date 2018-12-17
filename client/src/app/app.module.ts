@@ -17,7 +17,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './authentication/_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './authentication/_helpers/error.interceptor';
 import { fakeBackendProvider } from './authentication/_helpers/fake-backend';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 export let config: any = JSON.stringify({
     apiUrl: 'http://localhost:4000'
@@ -43,6 +43,7 @@ export let config: any = JSON.stringify({
         AppRoutingModule,
         HttpClientModule,
         ReactiveFormsModule,
+        FormsModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
