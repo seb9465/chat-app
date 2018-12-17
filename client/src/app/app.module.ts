@@ -11,6 +11,17 @@ import { FooterComponent } from './common/footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MenuUnComponent } from './menu-un/menu-un.component';
 import { MenuDeuxComponent } from './menu-deux/menu-deux.component';
+import { HomeComponent } from './authentication/home/home.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { JwtInterceptor } from './authentication/_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './authentication/_helpers/error.interceptor';
+import { fakeBackendProvider } from './authentication/_helpers/fake-backend';
+import { ReactiveFormsModule } from '@angular/forms';
+
+export let config: any = JSON.stringify({
+    apiUrl: 'http://localhost:4000'
+})
 
 @NgModule({
     declarations: [
@@ -19,7 +30,9 @@ import { MenuDeuxComponent } from './menu-deux/menu-deux.component';
         SidenavMenuComponent,
         FooterComponent,
         MenuUnComponent,
-        MenuDeuxComponent
+        MenuDeuxComponent,
+        HomeComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -27,9 +40,15 @@ import { MenuDeuxComponent } from './menu-deux/menu-deux.component';
         MatIconModule,
         MatSidenavModule,
         MatButtonModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
     ],
-    providers: [],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        fakeBackendProvider,
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
