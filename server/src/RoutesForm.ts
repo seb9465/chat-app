@@ -10,13 +10,14 @@ export class RoutesForm extends WebService {
 
     public constructor() {
         super();
-        this._mongodb = new MongoDB();
+        this._mongodb = new MongoDB('UN_URI_RANDOM');
     }
 
     public get routes(): Router {
         const router: Router = Router();
 
         router.get('/', async (req: Request, res: Response) => {
+            // tslint:disable-next-line:no-console
             console.log(this._mongodb.isConnected());
         });
 

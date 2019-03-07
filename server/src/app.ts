@@ -6,7 +6,6 @@ import * as logger from 'morgan';
 import * as cors from 'cors';
 import { injectable, inject } from 'inversify';
 import { WebService } from './WebService';
-import { RoutesForm } from './RoutesForm';
 import Types from './Types';
 import { Login } from './Routes/Login';
 
@@ -18,7 +17,6 @@ export class App {
     private app: express.Application;
 
     public constructor(
-        @inject(Types.RoutesForm) private routeForm: RoutesForm,
         @inject(Types.Login) private login: Login) {
         this.app = express();
     }
@@ -71,7 +69,6 @@ export class App {
         this.app.use('/', router);
 
         // this.addRoute(/*SERVICE*/);
-        this.addRoute(this.routeForm);
         this.addRoute(this.login);
 
         this.errorHandeling();

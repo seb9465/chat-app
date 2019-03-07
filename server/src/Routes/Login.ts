@@ -11,7 +11,7 @@ export class Login extends WebService {
     public constructor() {
         super();
         this._mongodb = new MongoDB('mongodb+srv://admin:admin@chat-test-zpcun.mongodb.net/test?retryWrites=true');
-        this._mongodb.connectToBD('chat-test', 'users');
+        
     }
 
     public get routes(): Router {
@@ -19,10 +19,18 @@ export class Login extends WebService {
 
         router.get('/', async (req: Request, res: Response) => {
             // tslint:disable-next-line:no-console
+            await this._mongodb.connectToBD('chat-test', 'users');
             console.log(this._mongodb.isConnected());
             res.send('Connected to mongodb');
         });
 
+        router.get('/all', async (req: Request, res: Response) => {
+            await this._mongodb.connectToBD('chat-test', 'users');
+            console.log(this._mongodb.isConnected());
+            let tmp: Document[] = await this._mongodb.getAll();
+            res.send(tmp);
+            
+        })
         return router;
     }
 }
