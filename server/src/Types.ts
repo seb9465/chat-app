@@ -1,3 +1,4 @@
 export default {
-    RoutesForm: Symbol('RoutesForm')
+    RoutesForm: Symbol('RoutesForm'),
+    Login: Symbol('Login')
 };
