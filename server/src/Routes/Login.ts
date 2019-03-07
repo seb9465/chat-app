@@ -10,7 +10,8 @@ export class Login extends WebService {
 
     public constructor() {
         super();
-        this._mongodb = new MongoDB();
+        this._mongodb = new MongoDB('mongodb+srv://admin:admin@chat-test-zpcun.mongodb.net/test?retryWrites=true');
+        this._mongodb.connectToBD('chat-test', 'users');
     }
 
     public get routes(): Router {
